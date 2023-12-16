@@ -9,13 +9,13 @@ This is a simple countdown timer application with two pages - one for setting th
 - [Technologies Used](#technologies-used)
 
 ## Features:
-1)Set hours, minutes, and seconds for the countdown timer.
-2)Start, pause, resume, reset, and restart functionalities available during the countdown.
-3)Visual representation of the countdown progress.
+- Set hours, minutes, and seconds for the countdown timer.
+- Start, pause, resume, reset, and restart functionalities available during the countdown.
+- Visual representation of the countdown progress.
 
 ## Usage:
-1)Setting the Countdown
-2)Countdown Display and Control
+- Setting the Countdown
+- Countdown Display and Control
 
 ## Structure:
 - index.html: Countdown input page.
@@ -25,6 +25,6 @@ This is a simple countdown timer application with two pages - one for setting th
 
 
 ## Technologies_used:
-1)HTML
-2)CSS
-3)JavaScript
+- HTML
+- CSS
+- JavaScript
