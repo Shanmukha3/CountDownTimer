@@ -3,10 +3,10 @@
 This is a simple countdown timer application with two pages - one for setting the countdown duration and another for displaying and controlling the countdown.
 
 ## Table of Contents
-- [Features](#Features)
+- [Features](#features)
 - [Usage](#usage)
-- [Structure](Structure)
-- [Technologies_used](Technologies_used)
+- [File Structure](#file-structure)
+- [Technologies Used](#technologies-used)
 
 ## Features:
 1)Set hours, minutes, and seconds for the countdown timer.
