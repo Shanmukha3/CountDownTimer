@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countdown Timer</title>
+    <link rel="stylesheet" type="text/css" href="style2.css">
+    <style>
+        
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div id="timer-container">
+        <div id="timer-fill"></div>
+        <div id="timer-text"></div>
+    </div>
+
+    <button onclick="stopTimer()">StopTime</button>
+    <button onclick="resetTimer()">Reset</button>
+    <button onclick="restartTimer()">Restart</button>
+</div>
+
+<script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const hours = parseInt(urlParams.get('hours')) || 0;
+    const minutes = parseInt(urlParams.get('minutes')) || 0;
+    const seconds = parseInt(urlParams.get('seconds')) || 0;
+
+    const totalSeconds = hours * 3600 + minutes * 60 + seconds;
+    let remainingSeconds = totalSeconds;
+    let timerInterval;
+    let isPaused = false;
+
+    function updateTimer() {
+        const timerFill = document.getElementById('timer-fill');
+        const timerText = document.getElementById('timer-text');
+
+        if (remainingSeconds <= 0) {
+            timerFill.style.clipPath = 'polygon(0 0, 100% 0, 100% 100%, 0 100%)';
+            timerText.textContent = 'Time\'s up!';
+            clearInterval(timerInterval);
+            return;
+        }
+
+        const percentageFilled = 100 - (remainingSeconds / totalSeconds) * 100;
+        timerFill.style.clipPath = `polygon(0 0, ${percentageFilled}% 0, ${percentageFilled}% 100%, 0 100%)`;
+        timerText.textContent = formatTime(remainingSeconds);
+
+        remainingSeconds--;
+
+        if (!isPaused) {
+            timerInterval = setTimeout(updateTimer, 1000);
+        }
+    }
+
+    function stopTimer() {
+        isPaused = !isPaused;
+
+        const stopButton = document.querySelector('button');
+        stopButton.textContent = isPaused ? 'Continue' : 'StopTime';
+
+        if (isPaused) {
+            clearTimeout(timerInterval); 
+            const timerFill = document.getElementById('timer-fill');
+            const computedStyle = window.getComputedStyle(timerFill);
+            const clipPathValue = computedStyle.getPropertyValue('clip-path');
+            timerFill.style.clipPath = clipPathValue; 
+        } else {
+            updateTimer();
+        }
+    }
+
+    function resetTimer() {
+        window.location.href = 'index.html';
+    }
+
+    function restartTimer() {
+        location.reload();
+    }
+
+    function formatTime(seconds) {
+        const hours = Math.floor(seconds / 3600);
+        const minutes = Math.floor((seconds % 3600) / 60);
+        const remainingSeconds = seconds % 60;
+
+        return `${padZero(hours)}:${padZero(minutes)}:${padZero(remainingSeconds)}`;
+    }
+
+    function padZero(number) {
+        return number < 10 ? `0${number}` : number;
+    }
+
+    updateTimer();
+</script>
+
+</body>
+</html>
