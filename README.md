@@ -6,7 +6,7 @@ This is a simple countdown timer application with two pages - one for setting th
 - [Features](#Features)
 - [Usage](#usage)
 - [Structure](Structure)
-- [Technologies Used](technology-used)
+- [Technologies_used](Technologies_used)
 
 ## Features:
 1)Set hours, minutes, and seconds for the countdown timer.
@@ -24,7 +24,7 @@ This is a simple countdown timer application with two pages - one for setting th
 - style2.css: Styling for the countdown display and control page.
 
 
-## Technologies Used:
+## Technologies_used:
 1)HTML
 2)CSS
 3)JavaScript
